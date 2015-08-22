@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-model href="root.rng" type="application/xml" schematypens="http://relaxng.org/ns/structure/1.0"?>
+<root>
+  <a>Element A</a>
+  <!-- Element b should not be allowed because it is
+       excluded by the override of anyElement as part
+       of the include of module-01.rng from the
+       external-module-01.rng
+  -->
+  <c>C element</c>
+  <subroot>
+    <a>A in subroot</a>
+    <!-- Element b is allowed here because it is explicitly
+         allowed by the subroot element.
+      -->
+    <b>B in subroot</b>
+    <!-- Element c is allowed because it is defined in the 
+         root RNG and is not explicitly excluded from the
+         anyElement pattern.
+      -->
+    <c>C in subroot</c>
+    <!-- Subroot should not be allowed here -->
+  </subroot>
+</root>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<grammar 
+  xmlns="http://relaxng.org/ns/structure/1.0"
+  xmlns:a="http://relaxng.org/ns/compatibility/annotations/1.0"
+  datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <div>
+    <a:documentation>Module reference</a:documentation>
+    <include href="module-01.rng">
+      <define name="anyElement">
+        <element>
+          <anyName>
+            <except>
+              <choice>
+                <name>a</name>
+                <name>subroot</name>
+              </choice>
+            </except>
+          </anyName>
+          <zeroOrMore>
+            <choice>
+              <attribute>
+                <anyName/>
+              </attribute>
+              <text/>
+              <ref name="anyElement"/>
+            </choice>
+          </zeroOrMore>
+        </element>
+      </define>
+    </include>
+  </div>
+  
+</grammar>
